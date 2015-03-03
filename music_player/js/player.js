@@ -1,0 +1,101 @@
+var files;
+var tracks;
+var track = 0;
+var audio = $("#player");
+var name;
+var playState = false;
+var songTextBox = document.getElementById('song');
+var titleTextBox = document.getElementById('title');
+
+function update(){
+	audio.attr("src", files[track]);
+	titleTextBox.innerHTML = files[track].replace(/^.*[\\\/]/, '')
+	audio[0].pause();
+	audio[0].load();
+	$('a').attr("href", files[track]);
+}
+
+$.ajax({
+  url: "filefinder.php",
+}).done(function( data ) {
+    if ( console && console.log ) {
+      console.log(data);
+    }
+	files = data.split(',');
+	files.pop();
+	tracks = files.length;
+	files = shuffle(files)
+	for (f=0; f < tracks; f++){console.log(files[f]);}
+	creatList();
+	update();
+	
+});
+$('#song').keypress(function(){
+	if (event.keyCode == 13) {
+		var songnum = parseInt(document.getElementById('song').value) - 1
+		if(songnum >= 0 && songnum <= tracks - 1){
+			track = songnum
+			update();
+			if(playState){audio[0].play();}
+		}
+		document.getElementById('song').value = ""
+    }
+});
+$('ol').click(function(e) {
+    var n = $(e.target).index() + this.start;
+    track = n - 1
+	update();
+	if(playState){audio[0].play();}    
+});
+function foward(override){
+	track++;
+	if(track >= tracks){track = 0;}
+	update();
+	if(playState || override){audio[0].play();}
+}
+function backward(){
+	track--;
+	if(track < 0){track = tracks - 1;}
+	update();
+    if(playState){audio[0].play();}
+}
+function shuffle(array) {
+  var currentIndex = array.length, temporaryValue, randomIndex ;
+  while (0 !== currentIndex) {
+    randomIndex = Math.floor(Math.random() * currentIndex);
+    currentIndex -= 1;
+    temporaryValue = array[currentIndex];
+    array[currentIndex] = array[randomIndex];
+    array[randomIndex] = temporaryValue;
+  }
+  return array;
+}
+function creatList(){
+	var list = document.getElementById("songList");
+	for(n = 0; n < tracks; n++){
+		var listItem = document.createElement('li');
+		listItem.innerHTML = files[n].replace(/^.*[\\\/]/, '');
+		list.appendChild(listItem);
+	}
+}
+function pp(){
+	if(!playState){audio[0].play();}
+	else{audio[0].pause()}
+}
+function dl(){
+	
+}
+$('#player').bind("ended", function(){foward(true);});
+$('#player').on('pause', function(){playState = false;});
+$('#player').on('play', function(){playState = true;});
+$(document).keydown(function(e){
+	console.log(e.which)
+	switch(e.which){
+		case 32: pp(); break;
+		case 39: foward(); break;
+		case 37: backward(); break;
+		case 179: pp(); break;
+		case 176: foward(); break;
+		case 177: backward(); break;
+	}
+});

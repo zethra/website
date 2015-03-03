@@ -8,8 +8,9 @@
 
 <body>
 <?php include 'header.html'?>
-<h1>IT IS ALIVE!! TEST TEXTTEST TEXTTEST TEXTTEST TEXTTEST TEXTTEST TEXTTEST TEXTTEST TEXTTEST TEXTTEST TEXTTEST TEXTTEST TEXTTEST TEXTTEST TEXT</h1>
-<script type="text/javascript" src="js/jquery-2.1.1.min.js"></script>
-<script type="text/javascript" src="js/main.js"></script>
+<div class="content">
+<h1>Welcome to ZethraTech.com</h1>
+<p>This website is a repository of my various works as well a host for various servers I run from time to time including a Minecraft server</p>
+</div>
 </body>
 </html>
