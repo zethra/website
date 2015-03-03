@@ -1,0 +1,71 @@
+@import 'mixins';
+
+$font : "Gill Sans", "Gill Sans MT", "Myriad Pro", "DejaVu Sans Condensed", Helvetica, Arial, sans-serif;
+
+.no-click {
+	pointer-events: none;
+}
+body{
+	margin:0px;
+	padding:0px;
+	top:0px;
+	border:0px;
+}
+
+#header{
+	margin:0px;
+	@include linear-gradient(top, #E3E3E3, white);
+	padding-top:40px;
+	width:100%;
+}
+
+nav {
+	text-align: center;
+}
+
+nav ul{
+	list-style:none;
+	height:80px;
+	vertical-align:middle;
+	
+}
+nav ul li{
+	display:inline;
+	margin-left:50px;
+	position:relative;
+}
+nav ul a{
+	color:#575757;
+	text-decoration:none;
+	font-family:$font;
+	font-size:24px;
+	text-shadow: 0 0 0 #575757;
+	@include transition(text-shadow, .1s);
+}
+nav ul a:hover{
+	text-shadow: 0 0 8px #575757;
+}
+nav ul ul{
+	position:absolute;
+	top:150%;
+	left:-90px;
+	z-index:1;
+}
+nav ul ul li{
+	display:none;
+	position:relative;
+	margin-top:10px;
+}
+.nojs nav ul ul li{
+	display:block;
+}
+nav ul ul a{
+	color:#575757;
+}
+nav ul div {
+	background:#FFFFFF;
+	margin:0px;
+	padding:0px;
+	display:none;
+	float:left;
+}
