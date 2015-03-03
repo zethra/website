@@ -12,11 +12,11 @@ function update(){
 	titleTextBox.innerHTML = files[track].replace(/^.*[\\\/]/, '')
 	audio[0].pause();
 	audio[0].load();
-	$('a').attr("href", files[track]);
+	//$('a').attr("href", files[track]);
 }
 
 $.ajax({
-  url: "filefinder.php",
+  url: "/php/player.php",
 }).done(function( data ) {
     if ( console && console.log ) {
       console.log(data);
