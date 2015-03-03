@@ -14,7 +14,9 @@ body {
   background: -o-linear-gradient(top, #E3E3E3, white);
   background: linear-gradient(top, #E3E3E3, white);
   padding-top: 40px;
-  width: 100%; }
+  width: 100%;
+  z-index: 99;
+  position: absolute;}
 
 nav {
   text-align: center; }

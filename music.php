@@ -15,7 +15,7 @@
 <audio id="player" src="" type="audio/mp3" controls></audio><br>
 <button id="backward" onClick="backward()">Last</button>
 <button id="foward" onClick="foward()">Next</button>
-Play Song:<input type="text" id="song"><a href="" download><button>Download</button></a>
+Play Song:<input type="text" id="song"><button onclick="$(window.location.href = $('#player').attr('src')">Download</button>
 </div><div id="content">
 <div><ol id="songList"></ol></div>
 </div>
