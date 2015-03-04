@@ -6,13 +6,22 @@ var name;
 var playState = false;
 var songTextBox = document.getElementById('song');
 var titleTextBox = document.getElementById('title');
+var downloadButton = document.getElementById('download');
+var currentText;
+var previousTest = $('#songList').find('li:nth-child(1)');
 
 function update(){
 	audio.attr("src", files[track]);
+	downloadButton.href = files[track];
+	downloadButton.download = files[track];
 	titleTextBox.innerHTML = files[track].replace(/^.*[\\\/]/, '')
 	audio[0].pause();
 	audio[0].load();
-	//$('a').attr("href", files[track]);
+	//console.log($('#songList').find('li:nth-child(' + (track + 1) + ')').html().italics());
+	previousTest.css('font-style', 'normal');
+	currentText = $('#songList').find('li:nth-child(' + (track + 1) + ')')
+	currentText.css('font-style', 'italic');
+	previousTest = currentText;
 }
 
 $.ajax({
