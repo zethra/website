@@ -1,7 +1,7 @@
 <?php require 'filefinder.php' ?>
 <?php
 
-$files = scanDir::scan("../music");
+$files = scanDir::scan("../musicFiles");
 
 //echo var_dump($files);
 

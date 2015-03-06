@@ -1,4 +1,4 @@
-.sass-cache/
+.sass-cache
 _notes
-music/*
-files/*
+musicFiles/*
+uploads/*

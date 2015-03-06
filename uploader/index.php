@@ -1,7 +1,7 @@
 <?php
 
 $message = "";
-$target_path = "../files/";
+$target_path = "../uploads/";
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 	if ( $_FILES['uploadedfile'] != "") {
 		
@@ -27,7 +27,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <body>
 <?php include '../header.html' ?>
 <?php echo $message ?>
-<form enctype="multipart/form-data" action="upload.php" method="POST">
+<form enctype="multipart/form-data" action="index.php" method="POST">
 Choose a file to upload: <input name="uploadedfile" type="file" /><br />
 <input type="submit" value="Upload File" />
 </form>
