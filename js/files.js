@@ -1,4 +1,4 @@
-var files, count;
+var files, count, folder;
 
 function createList() {
 	var list = document.getElementById("fileList");
@@ -13,19 +13,20 @@ function createList() {
 		list.appendChild(listItem);
 	}
 }
-
-$.ajax({
-  url: "/php/getFiles.php",
-}).done(function( data ) {
-    if ( console && console.log ) {
-      console.log(data);
-    }
-	files = data.split(',');
-	files.pop();
-	count = files.length;
-	createList();
-	for (var i=0; i < count; i++){console.log(files[i]);}
-});
+function getFiles() {
+	$.ajax({
+	  url: "/php/getFiles.php?folder=" + folder,
+	}).done(function( data ) {
+		if ( console && console.log ) {
+		  console.log(data);
+		}
+		files = data.split(',');
+		files.pop();
+		count = files.length;
+		createList();
+		for (var i=0; i < count; i++){console.log(files[i]);}
+	});
+}
 /*
 $('ul').click(function(e) {
     var i = $(e.target).index();  
