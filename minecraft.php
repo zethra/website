@@ -36,9 +36,9 @@ $Timer = Number_Format(MicroTime(true) - $Timer, 4, '.', '');
 <?php include 'header.html' ?>
 <div id="content">
     <div style="text-align: center;">
-        <h2>Zethra's FTB Unleased Server IP is:</h2>
+        <h2>Zethra's Minecraft Server</h2>
 
-        <h2>162.243.4.46:25565</h2>
+        <h2> IP is: 162.243.4.46</h2>
 
         <?php
         $Info = $Query->GetInfo();
@@ -61,18 +61,7 @@ $Timer = Number_Format(MicroTime(true) - $Timer, 4, '.', '');
         }
         ?>
 
-
-        <p><b>I do not run my server on a regular basis any more accept when requested</b></p>
-
-        <p><b>To get the FTB Unleashed mod pack, download the FTB launcher <a
-                    href="http://http://www.feed-the-beast.com/" target="_blank">here</a>, from the FTB web site. Log
-                in, Select the
-                Unleashed pack form the menu and click launcher.<br>
-                For a video tutorial go <a href="http://www.youtube.com/watch?v=Fts3swd147I"
-                                           target="_blank">here</a></b>
-
-        <p>
-            <img src="pack logo.png">
+        <p>If the server is down unexpectedly please contact me</p>
     </div>
 </div>
 
