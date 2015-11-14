@@ -9,15 +9,15 @@ var titleTextBox = document.getElementById('title');
 var downloadButton = document.getElementById('download');
 var currentText;
 var previousTest = $('#songList').find('li:nth-child(1)');
+var tags = [];
 
 function update(){
 	audio.attr("src", files[track]);
 	downloadButton.href = files[track];
 	downloadButton.download = files[track];
-	titleTextBox.innerHTML = files[track].replace(/^.*[\\\/]/, '')
+	titleTextBox.innerHTML = files[track].replace(/^.*[\\\/]/, '').replace(/^[0-9 | -]+/g,"").substring(0, files[track].replace(/^.*[\\\/]/, '').replace(/^[0-9 | -]+/g,"").length - 4);
 	audio[0].pause();
 	audio[0].load();
-	//console.log($('#songList').find('li:nth-child(' + (track + 1) + ')').html().italics());
 	previousTest.css('font-style', 'normal');
 	currentText = $('#songList').find('li:nth-child(' + (track + 1) + ')')
 	currentText.css('font-style', 'italic');
@@ -27,14 +27,10 @@ function update(){
 $.ajax({
   url: "/php/player.php",
 }).done(function( data ) {
-    if ( console && console.log ) {
-      console.log(data);
-    }
 	files = data.split(',');
 	files.pop();
 	tracks = files.length;
 	files = shuffle(files)
-	for (f=0; f < tracks; f++){console.log(files[f]);}
 	creatList();
 	update();
 	
@@ -83,7 +79,7 @@ function creatList(){
 	var list = document.getElementById("songList");
 	for(n = 0; n < tracks; n++){
 		var listItem = document.createElement('li');
-		listItem.innerHTML = files[n].replace(/^.*[\\\/]/, '');
+		listItem.innerHTML = files[n].replace(/^.*[\\\/]/, '').replace(/^[0-9 | -]+/g,"").substring(0, files[n].replace(/^.*[\\\/]/, '').replace(/^[0-9 | -]+/g,"").length - 4);
 		list.appendChild(listItem);
 	}
 }
@@ -98,7 +94,6 @@ $('#player').bind("ended", function(){foward(true);});
 $('#player').on('pause', function(){playState = false;});
 $('#player').on('play', function(){playState = true;});
 $(document).keydown(function(e){
-	console.log(e.which)
 	switch(e.which){
 		case 32: pp(); break;
 		case 39: foward(); break;

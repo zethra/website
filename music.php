@@ -2,6 +2,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 <title>Music Player</title>	
 <link href="css/main.css" type="text/css" rel="stylesheet" />
 <link href="/css/player.css" type="text/css" rel="stylesheet" />

@@ -15,16 +15,16 @@ var rPaddlePos;
 var bally;
 var velocty;
 var gg = false;
-const speed = 4;
+var speed = 4;
 
 function main(){
 	if(!gg){
-		getPos()
+		getPos();
 		move();
-		if(leftup && lPaddlePos >= topBound){leftmove(-1)}
-		else if(leftdown && lPaddlePos <= bottomBound - 170){leftmove(1)}
-		if(rightup && rPaddlePos >= topBound){rightmove(-1)}
-		else if(rightdown && rPaddlePos <= bottomBound - 170){rightmove(1)}
+		if(leftup && lPaddlePos >= topBound){leftmove(-1);}
+		else if(leftdown && lPaddlePos <= bottomBound - 170){leftmove(1);}
+		if(rightup && rPaddlePos >= topBound){rightmove(-1);}
+		else if(rightdown && rPaddlePos <= bottomBound - 170){rightmove(1);}
 	}
 }
 
@@ -84,11 +84,11 @@ function move(){
 					}
 				}
 			}
-			x *= -1
+			x *= -1;
 			$('#ball').css('left', '+=' + x);
 			$('#ball').css('top', '+=' + y);
 		}else if(topPos <= topBound || topPos >= bottomBound){
-			y *= -1
+			y *= -1;
 			$('#ball').css('left', '+=' + x);
 			$('#ball').css('top', '+=' + y);
 		}
@@ -144,7 +144,7 @@ function end2(){
 	window.setTimeout(restart,1000);
 }
 function restart(){
-	location.reload(false)
+	location.reload(false);
 }
 function fullscreen(){
 	var docElement, request;
@@ -152,7 +152,7 @@ function fullscreen(){
     docElement = document.documentElement;
     request = docElement.requestFullScreen || docElement.webkitRequestFullScreen || docElement.mozRequestFullScreen || docElement.msRequestFullScreen;
 
-    if(typeof request!="undefined" && request){
+    if(typeof request!=="undefined" && request){
         request.call(docElement);
     }
 }
