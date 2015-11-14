@@ -52,12 +52,13 @@ $Timer = Number_Format(MicroTime(true) - $Timer, 4, '.', '');
                     of a maximum of ' . $Info["MaxPlayers"] . '.</span></h2>';
         }
         $Players = $Query->GetPlayers();
-        echo '<h2><span style="color: #3ADF00; ">Players: <br/>';
-        foreach ($Players as $Player) {
-            echo htmlspecialchars( $Player ) . '<br/>';
+        if (!is_null($Players) && is_array($Players)) {
+            echo '<h2><span style="color: #3ADF00; ">Players: <br/>';
+            foreach ($Players as $Player) {
+                echo htmlspecialchars($Player) . '<br/>';
+            }
+            echo '</span></h2>';
         }
-        echo '</span></h2>';
-
         ?>
 
 
